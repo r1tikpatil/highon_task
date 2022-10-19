@@ -1,0 +1,105 @@
+.create_card {
+    background-color: grey;
+    width: 400px;
+    height: auto;
+    margin: auto;
+    padding: 2%;
+    color: white;
+    border-radius: 30px;
+
+    margin-top: 60px;
+    .header {
+        display: flex;
+        justify-content: space-around;
+        .icon {
+            cursor: pointer;
+            .material-icons {
+                font-weight: bold;
+            }
+        }
+        .heading {
+            display: flex;
+
+            div {
+                font-size: 1.5rem;
+            }
+        }
+    }
+
+    .colour-selection {
+        margin-top: 5%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .heading {
+            font-size: 1.7rem;
+            font-weight: 550;
+        }
+        .colours {
+            margin-top: 2%;
+            display: flex;
+            width: 100%;
+            justify-content: space-evenly;
+            div {
+                width: 50px;
+                height: 30px;
+                cursor: pointer;
+                transform: all 2s;
+            }
+            div:active {
+                transform: scale(0.96);
+            }
+        }
+    }
+
+    .input_div {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        div {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            input {
+                width: 100%;
+                color: white;
+                padding: 2px;
+            }
+        }
+    }
+    .buttons {
+        display: flex;
+        justify-content: space-around;
+        .save {
+            width: 100px;
+            height: 40px;
+            cursor: pointer;
+            transform: all 0.2s;
+            color: red;
+            background-color: white;
+            border-radius: 5px;
+            border: none;
+            font-weight: 500;
+            &:active {
+                transform: scale(0.96);
+            }
+        }
+        .cancel {
+            width: 100px;
+            height: 40px;
+            cursor: pointer;
+            transform: all 0.2s;
+            color: black;
+            background-color: white;
+            border-radius: 5px;
+            border: none;
+            font-weight: 500;
+            &:active {
+                transform: scale(0.96);
+            }
+        }
+    }
+}

@@ -1,8 +1,9 @@
-
+import ColourCard from "./components/colour_card.component";
 function App() {
   return (
-    
-    </div>
+    <>
+      <ColourCard />
+    </>
   );
 }
 
