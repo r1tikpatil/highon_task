@@ -31,7 +31,14 @@ const ColourCard = () => {
         </div>
       )}
       {!visible && (
-        <div className="heading" onClick={() => setVisible(true)}>
+        <div
+          className="heading"
+          onClick={() => {
+            setVisible(true);
+            setTitle("");
+            setDescription("");
+          }}
+        >
           <span>
             <span className="icon">
               <i className="material-icons">add</i>
