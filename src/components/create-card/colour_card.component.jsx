@@ -1,13 +1,23 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Card from "../card/card";
 
 import "./colour_card.scss";
+const array = [];
 
 const ColourCard = () => {
   const [visible, setVisible] = useState(false);
   const [title, setTitle] = useState("");
-  const [discription, setDiscription] = useState("");
+  const [description, setDescription] = useState("");
   const [colour, setColour] = useState("");
+  const [data, setData] = useState([]);
+  const [id, setId] = useState("");
+
+  useEffect(() => {
+    fetch("https://demo2965432.mockable.io/highon/colors")
+      .then((res) => res.json())
+      .then((response) => setData(response.data));
+  }, []);
+
   return (
     <>
       {!visible && (
@@ -45,24 +55,69 @@ const ColourCard = () => {
             <div className="heading">Select the card</div>
             <div className="colours">
               <div
-                style={{ backgroundColor: "blue" }}
-                onClick={() => setColour("blue")}
+                style={{ backgroundColor: "#CD7F32" }}
+                onClick={() => {
+                  setColour("#CD7F32");
+                  setId("1");
+                  data.forEach((d) => {
+                    if (d.id === "1") {
+                      array.push(d);
+                    }
+                  });
+                  console.log(array);
+                }}
               ></div>
               <div
-                style={{ backgroundColor: "red" }}
-                onClick={() => setColour("red")}
+                style={{ backgroundColor: "#C8A2C8" }}
+                onClick={() => {
+                  setColour("#C8A2C8");
+                  setId("2");
+                  data.forEach((d) => {
+                    if (d.id === "2") {
+                      array.push(d);
+                    }
+                  });
+                  console.log(array);
+                }}
               ></div>
               <div
-                style={{ backgroundColor: "yellow" }}
-                onClick={() => setColour("yellow")}
+                style={{ backgroundColor: "#F8ED62" }}
+                onClick={() => {
+                  setColour("#F8ED62");
+                  setId("3");
+                  data.forEach((d) => {
+                    if (d.id === "3") {
+                      array.push(d);
+                    }
+                  });
+                  console.log(array);
+                }}
               ></div>
               <div
-                style={{ backgroundColor: "purple" }}
-                onClick={() => setColour("purple")}
+                style={{ backgroundColor: "#FF0000" }}
+                onClick={() => {
+                  setColour("#FF0000");
+                  setId("4");
+                  data.forEach((d) => {
+                    if (d.id === "4") {
+                      array.push(d);
+                    }
+                  });
+                  console.log(array);
+                }}
               ></div>
               <div
-                style={{ backgroundColor: "brown" }}
-                onClick={() => setColour("brown")}
+                style={{ backgroundColor: "#0033FF" }}
+                onClick={() => {
+                  setColour("#0033FF");
+                  setId("5");
+                  data.forEach((d) => {
+                    if (d.id === "5") {
+                      array.push(d);
+                    }
+                  });
+                  console.log(array);
+                }}
               ></div>
             </div>
           </div>
@@ -78,25 +133,53 @@ const ColourCard = () => {
               />
             </div>
             <div>
-              <h5>Discription</h5>
-              <input
+              <h5>Description</h5>
+              <textarea
                 type="text"
-                placeholder="discription..."
+                placeholder="Description..."
                 required
-                onChange={(e) => setDiscription(e.target.value)}
-                value={discription}
+                onChange={(e) => setDescription(e.target.value)}
+                value={description}
+                rows="10"
+                cols="50"
               />
             </div>
           </div>
           <div className="buttons">
-            <button className="save">Save</button>
-            <button className="cancel" onClick={() => setVisible(false)}>
+            <button
+              className="save"
+              onClick={() => {
+                setVisible(false);
+              }}
+            >
+              Save
+            </button>
+            <button
+              className="cancel"
+              onClick={() => {
+                setVisible(false);
+                array.pop();
+              }}
+            >
               Cancel
             </button>
           </div>
         </div>
       )}
-      {!visible && <Card colour={colour} title={title} discription={discription} />}
+
+      {!visible &&
+        array &&
+        array.map((d) => {
+          return (
+            <Card
+              key={d.id}
+              colour={d.code}
+              title={title}
+              description={description}
+              data={d.data}
+            />
+          );
+        })}
     </>
   );
 };
